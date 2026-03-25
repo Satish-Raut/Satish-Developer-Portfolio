@@ -15,7 +15,7 @@
 
 ## 🚀 Features
 
-- **Next-Gen UX/UI Requirements**: Features glassmorphism, dynamic glowing gradients, and complex layered layouts. 
+- **Next-Gen UX/UI Requirements**: Features glassmorphism, dynamic glowing gradients, and complex layered layouts.
 - **Advanced Animations (GSAP & Framer Motion)**:
   - ScrollTriggered "stacked deck" animation timeline for Certifications where items fan out like a hand of cards based on scroll position.
   - Page-wide staggered reveals and floating blobs on the Hero & Contact sections.
@@ -31,20 +31,24 @@
 ## 🛠 Tech Stack
 
 **Core Frameworks**
+
 - [React 19](https://react.dev/)
 - [Vite 8](https://vitejs.dev/)
 
 **Styling & Design**
+
 - [Tailwind CSS v4](https://tailwindcss.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 
 **Animations & 3D**
+
 - [Framer Motion](https://framer.com/motion/) (Micro-interactions, Mount logic)
 - [GSAP](https://gsap.com/) & ScrollTrigger (Scroll-tied timelines)
 - [Three.js](https://threejs.org/) / [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/) / Drei (3D Rendering)
 - [Lenis](https://lenis.studiofreight.com/) (Smooth Scrolling)
 
 **Utilities**
+
 - [React-PDF](https://github.com/wojtekmaj/react-pdf) (PDF parsing and display)
 - [EmailJS](https://www.emailjs.com/) (Contact pipeline)
 
@@ -53,18 +57,21 @@
 ## 💻 Installation & Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/my-portfolio.git
    cd my-portfolio
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Environment Setup**
    Create a `.env` file in the root directory and add your `EmailJS` credentials so the contact form functions correctly:
+
    ```env
    VITE_EMAILJS_SERVICE_ID=your_service_id
    VITE_EMAILJS_TEMPLATE_ID=your_template_id
@@ -72,12 +79,15 @@
    ```
 
 4. **Run the development server**
+
    ```bash
    npm run dev
    ```
+
    > App will be accessible at `http://localhost:5173`
 
 5. **Build for Production**
+
    ```bash
    npm run build
    ```

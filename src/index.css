@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* Enable dark mode via .dark class on <html> */
+@custom-variant dark (&.dark);
+
+/* ─── CSS Variables ──────────────────────────────────── */
+:root {
+  --bg:           #faf8ff;
+  --bg-cream:     #f5f0ff;
+  --purple:       #7c3aed;
+  --purple-light: #a855f7;
+  --purple-dark:  #5b21b6;
+  --yellow:       #fbbf24;
+  --yellow-light: #fef3c7;
+  --black:        #111111;
+  --muted:        #6b7280;
+  --white:        #ffffff;
+  --glass-bg:     rgba(255,255,255,0.6);
+  --glass-border: rgba(124,58,237,0.15);
+  --card-bg:      #ffffff;
+}
+html.dark {
+  --bg:           #0d0d1a;
+  --bg-cream:     #13112b;
+  --black:        #f0eeff;
+  --muted:        #9d98b4;
+  --white:        #1a1730;
+  --glass-bg:     rgba(20,15,45,0.6);
+  --glass-border: rgba(168,85,247,0.2);
+  --card-bg:      #1a1730;
+}
+
+/* ─── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  /* Solid — never transparent so nothing bleeds through */
+  background-color: #faf8ff;
+  color: var(--black);
+  font-family: 'Nunito','Segoe UI',sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+html.dark body { background-color: #0d0d1a; }
+
+h1,h2,h3,h4,h5,h6,p,a,span,button,input,textarea,li {
+  font-family: 'Nunito','Segoe UI',sans-serif;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 10px; }
+
+/* ─── Custom Cursor ─────────────────────────────────── */
+.cursor-dot {
+  width:8px; height:8px; background:var(--purple);
+  border-radius:50%; position:fixed; top:0; left:0;
+  pointer-events:none; z-index:9999;
+}
+.cursor-ring {
+  width:36px; height:36px; border:2px solid var(--purple-light);
+  border-radius:50%; position:fixed; top:0; left:0;
+  pointer-events:none; z-index:9998;
+  transition:width .2s,height .2s,background .2s,border-color .2s; opacity:.7;
+}
+.cursor-ring.hovering {
+  width:52px; height:52px;
+  background:rgba(124,58,237,0.08); border-color:var(--yellow);
+}
+
+/* ─── Glass Card ────────────────────────────────────── */
+.glass-card {
+  background:var(--glass-bg); backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--glass-border); border-radius:20px;
+}
+
+/* ─── Animations ────────────────────────────────────── */
+@keyframes float       { 0%,100%{transform:translateY(0)}    50%{transform:translateY(-14px)} }
+@keyframes float-delay { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-10px) rotate(3deg)} }
+@keyframes wiggle      { 0%,100%{transform:rotate(-4deg)}    50%{transform:rotate(4deg)} }
+.float       { animation:float 5s ease-in-out infinite; }
+.float-delay { animation:float-delay 6s ease-in-out .8s infinite; }
+.wiggle      { animation:wiggle 3s ease-in-out infinite; }
+
+/* ─── Gradient Text ─────────────────────────────────── */
+.gradient-text {
+  background:linear-gradient(135deg,var(--purple),var(--purple-light));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ─── Buttons ───────────────────────────────────────── */
+.btn-purple {
+  background:var(--purple); color:white;
+  padding:.75rem 2rem; border-radius:999px;
+  font-weight:600; font-size:.95rem;
+  display:inline-flex; align-items:center; gap:.5rem;
+  transition:transform .25s,box-shadow .25s;
+  box-shadow:0 4px 20px rgba(124,58,237,.35); text-decoration:none;
+}
+.btn-purple:hover,.btn-purple:focus-visible {
+  transform:scale(1.05); box-shadow:0 10px 30px rgba(124,58,237,.5); outline:none;
+}
+.btn-outline {
+  border:2px solid var(--purple); color:var(--purple);
+  padding:.75rem 2rem; border-radius:999px;
+  font-weight:600; font-size:.95rem;
+  display:inline-flex; align-items:center; gap:.5rem;
+  transition:transform .25s,box-shadow .25s,background-color .25s,color .25s;
+  background:transparent; text-decoration:none;
+}
+.btn-outline:hover,.btn-outline:focus-visible {
+  transform:scale(1.05); background:var(--purple); color:white;
+  box-shadow:0 8px 26px rgba(124,58,237,.4); outline:none;
+}
+.magnetic-btn { transition:transform .3s cubic-bezier(.23,1,.32,1); }
+
+/* ─── Skill Tag ─────────────────────────────────────── */
+.skill-tag {
+  background:rgba(124,58,237,.1); border:1px solid rgba(124,58,237,.2);
+  color:var(--purple-dark); padding:.35rem .85rem; border-radius:999px;
+  font-size:.8rem; font-weight:500; transition:all .3s ease;
+}
+.skill-tag:hover {
+  background:rgba(124,58,237,.2); border-color:var(--purple);
+  transform:translateY(-2px);
+}
+
+/* ─── Marquee ───────────────────────────────────────── */
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.marquee-track { animation:marquee 20s linear infinite; display:flex; width:max-content; }
+
+/* ─── Page container — matches Hero width exactly ───── */
+.page-container {
+  width:100%; max-width:1280px;
+  margin-left:auto; margin-right:auto;
+  padding-left:1rem; padding-right:1rem;
+}
+@media(min-width:640px)  { .page-container{padding-left:1.5rem;  padding-right:1.5rem;} }
+@media(min-width:1024px) { .page-container{padding-left:2.5rem;  padding-right:2.5rem;} }
+
+/* ─── Section reset ─────────────────────────────────── */
+section { position:relative; }

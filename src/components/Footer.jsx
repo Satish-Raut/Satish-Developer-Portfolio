@@ -222,27 +222,53 @@ const Footer = () => {
             </p>
 
             {/* Socials */}
-            <div style={{ display: 'flex', gap: 10 }}>
-              {socials.map(s => {
-                const Icon = iconMap[s.icon];
-                return (
-                  <motion.a key={s.label} href={s.url} target="_blank" rel="noreferrer"
-                    aria-label={s.label}
-                    whileHover={{ y: -4, scale: 1.15 }}
-                    className="pulse-ring"
-                    style={{
-                      width: 38, height: 38, borderRadius: 10,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 16, transition: 'all 0.2s',
-                      background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(124,58,237,0.07)',
-                      border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(124,58,237,0.18)'}`,
-                      color: isDark ? 'rgba(196,181,253,0.8)' : '#7c3aed',
-                    }}
-                  >
-                    {Icon && <Icon />}
-                  </motion.a>
-                );
-              })}
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', width: '100%' }}>
+              
+              {/* GITHUB */}
+              <motion.a href="https://github.com/Satish-Raut" target="_blank" rel="noreferrer" aria-label="GitHub"
+                whileHover={{ y: -4, scale: 1.15 }} className="pulse-ring"
+                style={{
+                  width: 42, height: 42, minWidth: 42, flexShrink: 0, borderRadius: 12,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 20, transition: 'all 0.2s',
+                  background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(124,58,237,0.07)',
+                  border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(124,58,237,0.18)'}`,
+                  color: isDark ? 'rgba(196,181,253,0.8)' : '#7c3aed',
+                }}
+              >
+                <FaGithub />
+              </motion.a>
+
+              {/* LINKEDIN */}
+              <motion.a href="https://www.linkedin.com/in/satish-raut12/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+                whileHover={{ y: -4, scale: 1.15 }} className="pulse-ring"
+                style={{
+                  width: 42, height: 42, minWidth: 42, flexShrink: 0, borderRadius: 12,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 20, transition: 'all 0.2s',
+                  background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(124,58,237,0.07)',
+                  border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(124,58,237,0.18)'}`,
+                  color: isDark ? 'rgba(196,181,253,0.8)' : '#7c3aed',
+                }}
+              >
+                <FaLinkedin />
+              </motion.a>
+
+              {/* LEETCODE */}
+              <motion.a href="https://leetcode.com/u/__Satish__/" target="_blank" rel="noreferrer" aria-label="LeetCode"
+                whileHover={{ y: -4, scale: 1.15 }} className="pulse-ring"
+                style={{
+                  width: 42, height: 42, minWidth: 42, flexShrink: 0, borderRadius: 12,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 20, transition: 'all 0.2s',
+                  background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(124,58,237,0.07)',
+                  border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(124,58,237,0.18)'}`,
+                  color: isDark ? 'rgba(196,181,253,0.8)' : '#7c3aed',
+                }}
+              >
+                <SiLeetcode />
+              </motion.a>
+              
             </div>
           </motion.div>
 

@@ -137,9 +137,9 @@ const TabButton = ({ tab, active, onClick, isDark }) => (
     onClick={onClick}
     whileHover={{ scale: 1.05, y: -2 }}
     whileTap={{ scale: 0.95 }}
-    className="relative flex items-center gap-2 rounded-2xl text-xs sm:text-sm font-bold border-2 outline-none transition-all duration-250 overflow-hidden flex-shrink-0"
+    className="relative flex items-center gap-1.5 sm:gap-2 rounded-[14px] md:rounded-2xl text-[12px] md:text-sm font-bold border-2 outline-none transition-all duration-250 overflow-hidden flex-shrink-0"
     style={{
-      padding: '10px 20px',
+      padding: typeof window !== 'undefined' && window.innerWidth < 640 ? '8px 14px' : '10px 20px',
       ...(active ? {
         color: 'white',
         background: `linear-gradient(135deg, ${tab.color}dd, ${tab.color}99)`,
@@ -281,8 +281,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-2 sm:gap-3 mb-10 md:mb-12 overflow-x-auto pb-2 sm:pb-0 scrollbar-none"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 md:mb-12"
         >
           {TABS.map((tab) => (
             <TabButton

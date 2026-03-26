@@ -1,13 +1,12 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
-  FaGithub, FaLinkedin, FaTwitter,
+  FaGithub, FaLinkedin,
   FaEnvelope, FaMapMarkerAlt, FaClock,
 } from 'react-icons/fa';
-import { personal, socials } from '../data/portfolio';
+import { SiLeetcode } from 'react-icons/si';
+import { personal } from '../data/portfolio';
 import { useTheme } from '../context/ThemeContext';
-
-const iconMap = { FaGithub, FaLinkedin, FaTwitter };
 import emailjs from '@emailjs/browser';
 
 const fadeUp = {
@@ -208,23 +207,47 @@ const Contact = () => {
             <InfoPill icon={FaClock} label="Response" value="Within 24 hours" isDark={isDark} color="#f59e0b" />
 
             {/* Socials */}
-            <div className="flex" style={{ gap: 12 }}>
-              {socials.map((s) => {
-                const Icon = iconMap[s.icon];
-                return (
-                  <motion.a key={s.label} href={s.url} target="_blank" rel="noreferrer"
-                    aria-label={s.label} whileHover={{ y: -4, scale: 1.1 }}
-                    className={`rounded-xl flex items-center justify-center text-lg border transition-all duration-300
-                      ${isDark
-                        ? 'bg-white/[0.05] border-white/[0.08] text-gray-400 hover:text-purple-400 hover:border-purple-500/50'
-                        : 'bg-white border-purple-100 text-gray-500 hover:text-purple-600 hover:border-purple-300 shadow-sm'
-                      }`}
-                    style={{ width: 44, height: 44 }}
-                  >
-                    {Icon && <Icon />}
-                  </motion.a>
-                );
-              })}
+            <div className="flex flex-wrap" style={{ gap: 12 }}>
+              
+              {/* GitHub */}
+              <motion.a href="https://github.com/Satish-Raut" target="_blank" rel="noreferrer" aria-label="GitHub"
+                whileHover={{ y: -4, scale: 1.1 }}
+                className={`rounded-xl flex items-center justify-center text-lg border transition-all duration-300
+                  ${isDark
+                    ? 'bg-white/[0.05] border-white/[0.08] text-gray-400 hover:text-purple-400 hover:border-purple-500/50'
+                    : 'bg-white border-purple-100 text-gray-500 hover:text-purple-600 hover:border-purple-300 shadow-sm'
+                  }`}
+                style={{ width: 44, height: 44 }}
+              >
+                <FaGithub />
+              </motion.a>
+
+              {/* LinkedIn */}
+              <motion.a href="https://www.linkedin.com/in/satish-raut12/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+                whileHover={{ y: -4, scale: 1.1 }}
+                className={`rounded-xl flex items-center justify-center text-lg border transition-all duration-300
+                  ${isDark
+                    ? 'bg-white/[0.05] border-white/[0.08] text-gray-400 hover:text-purple-400 hover:border-purple-500/50'
+                    : 'bg-white border-purple-100 text-gray-500 hover:text-purple-600 hover:border-purple-300 shadow-sm'
+                  }`}
+                style={{ width: 44, height: 44 }}
+              >
+                <FaLinkedin />
+              </motion.a>
+
+              {/* LeetCode */}
+              <motion.a href="https://leetcode.com/u/__Satish__/" target="_blank" rel="noreferrer" aria-label="LeetCode"
+                whileHover={{ y: -4, scale: 1.1 }}
+                className={`rounded-xl flex items-center justify-center text-lg border transition-all duration-300
+                  ${isDark
+                    ? 'bg-white/[0.05] border-white/[0.08] text-gray-400 hover:text-purple-400 hover:border-purple-500/50'
+                    : 'bg-white border-purple-100 text-gray-500 hover:text-purple-600 hover:border-purple-300 shadow-sm'
+                  }`}
+                style={{ width: 44, height: 44 }}
+              >
+                <SiLeetcode />
+              </motion.a>
+
             </div>
           </motion.div>
 

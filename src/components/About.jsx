@@ -77,26 +77,33 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* Right — Info Stack (mobile: readable type + soft panel so copy isn’t edge-to-edge) */}
+        {/* Right — Info Stack */}
+        <style>{`
+          .about-mobile-box { padding: 32px 24px; border-width: 2px; }
+          .about-quote-box { padding-top: 24px; padding-bottom: 8px; margin-top: 8px; }
+          @media (min-width: 768px) {
+            .about-mobile-box { padding: 0 !important; border-width: 0 !important; }
+            .about-quote-box { margin-top: 16px; }
+          }
+        `}</style>
         <div
-          className={`
-            order-1 md:order-2 w-full min-w-0 space-y-3.5 sm:space-y-4 md:space-y-5
-            rounded-2xl border p-4 sm:p-5 md:p-0 md:rounded-none md:border-0
+          className={`about-mobile-box overflow-hidden
+            order-1 md:order-2 w-full min-w-0 flex flex-col gap-4 sm:gap-5 md:gap-6
+            rounded-[24px] md:rounded-none
             ${isDark
               ? 'border-white/[0.08] bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.2)] md:bg-transparent md:shadow-none'
-              : 'border-purple-200/70 bg-white/70 shadow-[0_8px_30px_rgba(124,58,237,0.08)] md:bg-transparent md:shadow-none'
+              : 'border-purple-100 bg-white shadow-[0_12px_40px_rgba(124,58,237,0.08)] md:bg-transparent md:shadow-none'
             }
             backdrop-blur-md md:backdrop-blur-0
           `}
         >
-
           {/* Professional Headline */}
           <motion.div
             variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2}
           >
             <h3
-              className={`font-bold sm:font-extrabold transition-colors duration-300 text-balance break-words ${isDark ? 'text-white' : 'text-gray-900'}`}
-              style={{ fontSize: 'clamp(1rem, 2.4vw + 0.5rem, 1.65rem)', lineHeight: 1.3 }}
+              className={`font-black transition-colors duration-300 text-balance break-words ${isDark ? 'text-white' : 'text-gray-900'}`}
+              style={{ fontSize: 'clamp(1.15rem, 2.8vw + 0.5rem, 1.85rem)', lineHeight: 1.35 }}
             >
               {personal.about.headline}
             </h3>
@@ -105,7 +112,7 @@ const About = () => {
           {/* Professional Summary */}
           <motion.p
             variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2.2}
-            className="text-[var(--muted)] text-sm sm:text-[15px] md:text-base leading-relaxed max-w-[62ch] md:max-w-none text-pretty"
+            className="text-[var(--muted)] text-[15px] sm:text-base leading-relaxed max-w-[62ch] md:max-w-none text-pretty"
           >
             {personal.about.summary}
           </motion.p>
@@ -113,37 +120,24 @@ const About = () => {
           {/* Background Story */}
           <motion.p
             variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2.3}
-            className="text-[var(--muted)] text-sm sm:text-[15px] md:text-base leading-relaxed max-w-[62ch] md:max-w-none text-pretty"
+            className="text-[var(--muted)] text-[15px] sm:text-base leading-relaxed max-w-[62ch] md:max-w-none text-pretty"
           >
             {personal.about.background}
           </motion.p>
 
-          {/* Expertise Areas */}
+          {/* Expertise Areas - Intentionally omitted from mobile to save space previously */}
           <motion.div
             variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2.4}
             className="space-y-3 sm:space-y-3.5"
           >
-            {/* {personal.about.valueProposition.map((expertise, i) => (
-              <div key={i} className="flex gap-2.5 min-w-0">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[var(--purple)] rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
-                <div className="min-w-0 flex-1">
-                  <h4 className={`font-semibold sm:font-bold text-sm sm:text-[15px] transition-colors duration-300 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                    {expertise.title}
-                  </h4>
-                  <p className="text-[var(--muted)] text-xs sm:text-sm leading-relaxed mt-0.5 sm:mt-1 text-pretty">
-                    {expertise.description}
-                  </p>
-                </div>
-              </div>
-            ))} */}
           </motion.div>
 
           {/* Professional Approach */}
           <motion.div
             variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} custom={2.8}
-            className={`pt-3 sm:pt-4 border-t ${isDark ? 'border-white/10' : 'border-purple-200/60'}`}
+            className={`about-quote-box border-t ${isDark ? 'border-white/10' : 'border-purple-100'}`}
           >
-            <p className={`mt-10 leading-relaxed italic text-sm sm:text-[15px] text-pretty ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`leading-relaxed italic text-[15px] sm:text-base text-pretty font-medium ${isDark ? 'text-purple-300' : 'text-purple-700'}`}>
               &ldquo;{personal.about.approach}&rdquo;
             </p>
           </motion.div>

@@ -229,7 +229,7 @@ const Navbar = () => {
                     <motion.a
                       key={link.label}
                       href={link.href}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={handleScroll}
                       initial={{ opacity: 0, x: -8 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.07 }}

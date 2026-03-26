@@ -25,6 +25,26 @@ const Navbar = () => {
 
   const isDark = theme === "dark";
 
+  const handleScroll = (e) => {
+    e.preventDefault();
+    setMenuOpen(false); // Close mobile menu if open
+    const href = e.currentTarget.getAttribute("href");
+    const targetId = href.replace(/.*\#/, "");
+    const elem = document.getElementById(targetId);
+    
+    if (elem) {
+      // Allow the layout shift to compute before scrolling
+      setTimeout(() => {
+        const offset = isMobile ? 60 : 80; // Compensate for sticky navbar height
+        const bodyPosition = document.body.getBoundingClientRect().top;
+        const elemPosition = elem.getBoundingClientRect().top;
+        const scrollTarget = elemPosition - bodyPosition - offset;
+        
+        window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+      }, 50);
+    }
+  };
+
   /* ── Theme Toggle Button ── */
   const ThemeToggle = ({ mobile = false }) => (
     <motion.button
@@ -78,6 +98,7 @@ const Navbar = () => {
             {/* Logo */}
             <a
               href="#home"
+              onClick={handleScroll}
               className={`text-2xl font-black flex items-center gap-0.5 tracking-tight transition-colors duration-300
                 ${isDark ? "text-white" : "text-gray-900"}`}
             >
@@ -96,6 +117,7 @@ const Navbar = () => {
                     )}
                     <a
                       href={link.href}
+                      onClick={handleScroll}
                       className={`text-base font-semibold px-4 py-2 rounded-lg transition-all duration-200 hover:text-purple-500
                         ${isDark
                           ? "text-gray-300 hover:bg-purple-900/40"
@@ -146,6 +168,7 @@ const Navbar = () => {
             {/* Logo */}
             <a
               href="#home"
+              onClick={handleScroll}
               className={`text-lg font-black flex items-center gap-0.5 transition-colors duration-300
                 ${isDark ? "text-white" : "text-gray-900"}`}
             >

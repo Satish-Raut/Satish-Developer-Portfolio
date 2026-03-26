@@ -15,8 +15,8 @@ const certifications = [
   {
     id: 1,
     title: 'Data Structures & Algorithms',
-    issuer: 'NPTEL',
-    date: '2023',
+    issuer: 'LPU-NeoColab',
+    date: 'DEC-2024',
     credentialId: 'DSA-2023',
     skills: ['C++', 'Algorithms', 'Data Structures', 'Problem Solving'],
     credentialUrl: '/MyCertificates/DSA.pdf',
@@ -27,8 +27,8 @@ const certifications = [
   {
     id: 2,
     title: 'Programming in Java',
-    issuer: 'NPTEL',
-    date: '2023',
+    issuer: 'LPU-NeoColab',
+    date: 'MAY-2025',
     credentialId: 'JAVA-NPTEL-2023',
     skills: ['Java', 'OOP', 'Collections', 'Multithreading'],
     credentialUrl: '/MyCertificates/Java Certificate.pdf',

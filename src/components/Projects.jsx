@@ -60,8 +60,8 @@ const ProjectCard = ({ project, isDark, index }) => {
       transition={{ type: 'spring', stiffness: 260, damping: 26 }}
       style={{
         /* sizing */
-        width: 'min(calc(100vw - 2rem), 390px)',
-        minHeight: 'min(72vh, 580px)',
+        width: 'min(calc(100vw - 2.5rem), 380px)',
+        height: 'min(76dvh, 580px)', // Rigid geometry ensures strict viewport matching
         flexShrink: 0,
         display: 'flex', flexDirection: 'column',
         borderRadius: 20,
@@ -98,7 +98,7 @@ const ProjectCard = ({ project, isDark, index }) => {
       {/* ── Image / hero area ── */}
       <div style={{
         position: 'relative',
-        height: '38%', minHeight: 130,
+        height: '35%', minHeight: 110, // Adjusted smaller for mobile breathing room
         flexShrink: 0, overflow: 'hidden',
         background: isDark
           ? `linear-gradient(135deg, ${accent.from}1a, rgba(13,10,28,0.9))`
@@ -166,56 +166,65 @@ const ProjectCard = ({ project, isDark, index }) => {
       {/* ── Card content ── */}
       <div style={{
         flex: 1, display: 'flex', flexDirection: 'column',
-        padding: '1.25rem 1.5rem 1.5rem',
+        padding: '1.25rem', // Tighter spacing internally
         gap: '0.7rem',
+        overflow: 'hidden',
       }}>
 
         {/* Title */}
         <h3 style={{
-          fontSize: 17, fontWeight: 800, lineHeight: 1.3,
-          color: isDark ? '#f0eeff' : '#18111a',
+          fontSize: 16, fontWeight: 800, lineHeight: 1.3, shrink: 0,
+          color: isDark ? '#f0eeff' : '#18111a', flexShrink: 0
         }}>
           {project.title}
         </h3>
 
-        {/* Description */}
-        <p style={{
-          fontSize: 13, lineHeight: 1.75, flex: 1,
-          color: isDark ? 'rgba(167,139,250,0.7)' : 'rgba(109,40,217,0.6)',
+        {/* Scrollable Center Block for mobile cramming constraints */}
+        <div style={{ 
+          flex: 1, display: 'flex', flexDirection: 'column', gap: '0.8rem', 
+          overflowY: 'auto', paddingRight: '4px', scrollbarWidth: 'none', msOverflowStyle: 'none' 
         }}>
-          {project.description}
-        </p>
+          <style>{`div::-webkit-scrollbar { display: none; }`}</style>
+          
+          {/* Description */}
+          <p style={{
+            fontSize: 13, lineHeight: 1.6,
+            color: isDark ? 'rgba(167,139,250,0.7)' : 'rgba(109,40,217,0.6)',
+          }}>
+            {project.description}
+          </p>
 
-        {/* Tags */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-          {project.tags.map(tag => (
-            <span key={tag} style={{
-              fontSize: 11, fontWeight: 600,
-              padding: '4px 10px', borderRadius: 999,
-              background: hovered
-                ? `${accent.from}18`
-                : isDark ? 'rgba(139,92,246,0.1)' : 'rgba(124,58,237,0.07)',
-              border: `1px solid ${hovered
-                ? accent.from + '45'
-                : isDark ? 'rgba(139,92,246,0.22)' : 'rgba(124,58,237,0.18)'}`,
-              color: hovered ? accent.from : isDark ? '#c4b5fd' : '#7c3aed',
-              transition: 'all 0.25s',
-            }}>
-              {tag}
-            </span>
-          ))}
+          {/* Tags */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, paddingBottom: '0.5rem' }}>
+            {project.tags.map(tag => (
+              <span key={tag} style={{
+                fontSize: 11, fontWeight: 600,
+                padding: '4px 10px', borderRadius: 999,
+                background: hovered
+                  ? `${accent.from}18`
+                  : isDark ? 'rgba(139,92,246,0.1)' : 'rgba(124,58,237,0.07)',
+                border: `1px solid ${hovered
+                  ? accent.from + '45'
+                  : isDark ? 'rgba(139,92,246,0.22)' : 'rgba(124,58,237,0.18)'}`,
+                color: hovered ? accent.from : isDark ? '#c4b5fd' : '#7c3aed',
+                transition: 'all 0.25s',
+              }}>
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Divider */}
         <div style={{
-          height: 1,
+          height: 1, flexShrink: 0, marginTop: 'auto',
           background: isDark
             ? 'rgba(139,92,246,0.12)'
             : 'rgba(124,58,237,0.08)',
         }} />
 
         {/* Links */}
-        <div style={{ display: 'flex', gap: 10 }}>
+        <div style={{ display: 'flex', gap: 10, flexShrink: 0, paddingTop: '4px' }}>
           {/* GitHub — ghost */}
           <a href={project.githubUrl} target="_blank" rel="noreferrer"
             style={{

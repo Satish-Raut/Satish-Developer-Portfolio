@@ -107,18 +107,18 @@ const Hero = () => {
       {/* ══ CONSTRAINED WRAPPER ══ */}
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10">
 
-        {/* ══ SOCIAL SIDEBAR — always left, smaller on mobile ══ */}
-        <div className="absolute left-0 top-0 bottom-0 flex flex-col items-center justify-center z-30"
-          style={{ width: "clamp(28px, 4vw, 40px)" }}
+        {/* ══ SOCIAL SIDEBAR — always left, larger and shifted up on mobile ══ */}
+        <div className="absolute left-0 top-0 bottom-0 flex flex-col items-center justify-center z-30 -translate-y-16 lg:translate-y-0"
+          style={{ width: "clamp(40px, 5vw, 50px)" }}
         >
           {/* Top line */}
           <div
-            className={`w-px mb-4 flex-shrink-0 ${isDark ? "bg-purple-900/50" : "bg-purple-200"}`}
+            className={`w-px mb-5 flex-shrink-0 ${isDark ? "bg-purple-900/50" : "bg-purple-200"}`}
             style={{ height: "clamp(40px, 8vw, 120px)" }}
           />
 
           {/* Icons */}
-          <div className="flex flex-col" style={{ gap: "clamp(14px, 3vw, 24px)" }}>
+          <div className="flex flex-col relative left-0.5" style={{ gap: "clamp(18px, 4vw, 26px)" }}>
             {socials.map((social, i) => {
               const Icon =
                 social.label === "GitHub" ? FaGithub
@@ -137,7 +137,7 @@ const Hero = () => {
                   className={`transition-colors duration-300 ${
                     isDark ? "text-purple-400/70 hover:text-purple-300" : "text-purple-400 hover:text-purple-600"
                   }`}
-                  style={{ fontSize: "clamp(14px, 3vw, 22px)" }}
+                  style={{ fontSize: "clamp(20px, 4.5vw, 24px)" }}
                 >
                   <Icon />
                 </motion.a>
@@ -147,7 +147,7 @@ const Hero = () => {
 
           {/* Bottom line */}
           <div
-            className={`w-px mt-4 flex-shrink-0 ${isDark ? "bg-purple-900/50" : "bg-purple-200"}`}
+            className={`w-px mt-5 flex-shrink-0 ${isDark ? "bg-purple-900/50" : "bg-purple-200"}`}
             style={{ height: "clamp(40px, 8vw, 120px)" }}
           />
         </div>
